@@ -1,0 +1,437 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: "Special Elite", system-ui, serif;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.book {
+  --bg: #000;
+  --fg: #fff;
+  --muted: rgba(255, 255, 255, 0.45);
+  --border: rgba(255, 255, 255, 0.2);
+  --spine: rgba(255, 255, 255, 0.14);
+  --chrome-footer: 3.75rem;
+  --chrome-nav: 4rem;
+
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  background: var(--bg);
+  color: var(--fg);
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.book[data-theme="white"] {
+  --bg: #fff;
+  --fg: #000;
+  --muted: rgba(0, 0, 0, 0.45);
+  --border: rgba(0, 0, 0, 0.2);
+  --spine: rgba(0, 0, 0, 0.12);
+}
+
+.book[data-theme="black"] {
+  --bg: #000;
+  --fg: #fff;
+  --muted: rgba(255, 255, 255, 0.45);
+  --border: rgba(255, 255, 255, 0.2);
+  --spine: rgba(255, 255, 255, 0.14);
+}
+
+.book__stage {
+  position: absolute;
+  inset: 0;
+  bottom: calc(var(--chrome-footer) + var(--chrome-nav));
+  perspective: 2200px;
+  perspective-origin: 50% 50%;
+}
+
+.book__stage::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  transform: translateX(-50%);
+  background: var(--spine);
+  z-index: 6;
+  pointer-events: none;
+}
+
+.spread {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  transform-style: preserve-3d;
+}
+
+.spread--current {
+  z-index: 2;
+}
+
+.spread--incoming {
+  z-index: 1;
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.spread.is-visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.spread--underneath {
+  visibility: visible;
+  opacity: 1;
+}
+
+.spread--hidden-during-flip {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.book__flip-leaf {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  background: var(--bg);
+  color: var(--fg);
+  isolation: isolate;
+  contain: layout paint;
+  pointer-events: none;
+}
+
+.book__flip-leaf .panel {
+  width: 100%;
+  height: 100%;
+  transform: none;
+  will-change: auto;
+}
+
+.book__flip-leaf .panel__image,
+.book__flip-leaf .panel__label,
+.book__flip-leaf .panel__text,
+.book__flip-leaf .panel__title {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.book__flip-leaf--right {
+  right: 0;
+  transform-origin: left center;
+}
+
+.book__flip-leaf--left {
+  left: 0;
+  transform-origin: right center;
+}
+
+.panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.book__flip-leaf--forward-out {
+  animation: leaf-forward-out 0.7s ease-in forwards;
+}
+
+.book__flip-leaf--backward-out {
+  animation: leaf-backward-out 0.7s ease-in forwards;
+}
+
+@keyframes leaf-forward-out {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(-90deg);
+  }
+}
+
+@keyframes leaf-backward-out {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(90deg);
+  }
+}
+
+.panel--left {
+  border-right: none;
+}
+
+.panel--right {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2.5rem 3rem;
+  overflow-y: auto;
+}
+
+.panel__image {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.panel__title {
+  font-family: "Mrs Saint Delafield", cursive;
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 1.1;
+  text-align: center;
+  width: 100%;
+  padding: 2rem;
+}
+
+.panel__label {
+  font-family: "Special Elite", system-ui, serif;
+  font-size: clamp(0.8rem, 1.6vw, 1rem);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+  opacity: 0.85;
+}
+
+.panel__text {
+  font-family: "Special Elite", system-ui, serif;
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  line-height: 1.6;
+  max-width: 36ch;
+}
+
+.type-word {
+  opacity: 0;
+}
+
+.type-word.is-visible {
+  opacity: 1;
+}
+
+.panel--text-pending .panel__label,
+.panel--text-pending .panel--typing {
+  visibility: hidden;
+}
+
+.panel--typing .type-word {
+  transition: opacity 0.05s ease;
+}
+
+.panel--typing-done .type-word {
+  opacity: 1;
+}
+
+.panel__placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: min(80%, 320px);
+  aspect-ratio: 4 / 5;
+  border: 2px dashed var(--border);
+  border-radius: 4px;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.panel__placeholder-title {
+  font-family: "Mrs Saint Delafield", cursive;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+.panel__placeholder-note {
+  font-family: "Special Elite", system-ui, serif;
+  font-size: clamp(1rem, 2.5vw, 1.35rem);
+  color: var(--muted);
+}
+
+.book__footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  padding: 0.35rem 1rem 0.55rem;
+  text-align: center;
+  font-size: clamp(0.55rem, 1.2vw, 0.7rem);
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.book__footer p + p {
+  margin-top: 0.15rem;
+}
+
+.book__footer a {
+  color: var(--muted);
+  text-decoration: none;
+  /* text-underline-offset: 1px; */
+}
+
+.book__footer a:hover {
+  opacity: 0.8;
+}
+
+.book__nav {
+  position: absolute;
+  bottom: var(--chrome-footer);
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1rem 1.5rem;
+  z-index: 10;
+}
+
+.book__nav-btn {
+  font-family: inherit;
+  font-size: 2rem;
+  line-height: 1;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--fg);
+  cursor: pointer;
+  transition: opacity 0.2s, background 0.2s;
+}
+
+.book__nav-btn:hover:not(:disabled) {
+  background: var(--border);
+}
+
+.book__nav-btn:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+.book__page-indicator {
+  font-size: 1.25rem;
+  min-width: 6ch;
+  text-align: center;
+}
+
+.book__tap-zones {
+  position: absolute;
+  inset: 0;
+  bottom: calc(var(--chrome-footer) + var(--chrome-nav));
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.book__tap {
+  pointer-events: auto;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.book.is-flipping {
+  pointer-events: none;
+}
+
+.book.is-flipping .book__nav-btn,
+.book.is-flipping .book__tap {
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .book__stage {
+    perspective: none;
+  }
+
+  .spread {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    transform: none !important;
+  }
+
+  .panel--left {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .panel--right {
+    padding: 1.5rem;
+  }
+
+  .book__flip-leaf--forward-out,
+  .book__flip-leaf--backward-out {
+    animation: none;
+  }
+
+  .book.is-flipping .spread--underneath {
+    animation: none;
+  }
+
+  .book.is-flipping .book__flip-leaf {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .book__stage {
+    perspective: none;
+  }
+
+  .book__flip-leaf--forward-out,
+  .book__flip-leaf--backward-out {
+    animation: none;
+  }
+
+  .book.is-flipping .spread--underneath {
+    animation: none;
+  }
+
+  .book {
+    transition: none;
+  }
+}

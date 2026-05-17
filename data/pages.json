@@ -1,0 +1,483 @@
+{
+  "meta": {
+    "title": "InkTober 2025",
+    "fontFamily": "Mrs Saint Delafield"
+  },
+  "pages": [
+    {
+      "id": "cover",
+      "theme": "black",
+      "left": {
+        "type": "text",
+        "content": "InkTober 2025"
+      },
+      "right": {
+        "type": "image",
+        "src": "public/inktoboerprompt_54952332528_l.jpg",
+        "alt": "Official 2025 prompt list"
+      }
+    },
+    {
+      "id": "day-01",
+      "day": 1,
+      "prompt": "Mustache",
+      "theme": "white",
+      "left": {
+        "type": "image",
+        "src": "public/images/white/mustache_54912710829_l.jpg",
+        "alt": "Mustache"
+      },
+      "right": {
+        "type": "text",
+        "content": "Placeholder text for Mustache."
+      }
+    },
+    {
+      "id": "day-02",
+      "day": 2,
+      "prompt": "Weave",
+      "theme": "white",
+      "left": {
+        "type": "image",
+        "src": "public/images/white/weave_54951184767_l.jpg",
+        "alt": "Weave"
+      },
+      "right": {
+        "type": "text",
+        "content": "Placeholder text for Weave."
+      }
+    },
+    {
+      "id": "day-03",
+      "day": 3,
+      "prompt": "Crown",
+      "theme": "white",
+      "left": {
+        "type": "image",
+        "src": "public/images/white/crown_54911089448_l.jpg",
+        "alt": "Crown"
+      },
+      "right": {
+        "type": "text",
+        "content": "Placeholder text for Crown."
+      }
+    },
+    {
+      "id": "day-04",
+      "day": 4,
+      "prompt": "Murky",
+      "theme": "black",
+      "left": {
+        "type": "image",
+        "src": "public/images/black/murky_54912461426_l.jpg",
+        "alt": "Murky"
+      },
+      "right": {
+        "type": "text",
+        "content": "Placeholder text for Murky."
+      }
+    },
+    {
+      "id": "day-05",
+      "day": 5,
+      "prompt": "Deer",
+      "theme": "white",
+      "left": {
+        "type": "image",
+        "src": "public/images/white/deer_55012879685_l.jpg",
+        "alt": "Deer"
+      },
+      "right": {
+        "type": "text",
+        "content": "Placeholder text for Deer."
+      }
+    },
+    {
+      "id": "day-06",
+      "day": 6,
+      "prompt": "Pierce",
+      "theme": "white",
+      "left": {
+        "type": "image",
+        "src": "public/images/white/pierce_54950191911_l.jpg",
+        "alt": "Pierce"
+      },
+      "right": {
+        "type": "text",
+        "content": "Placeholder text for Pierce."
+      }
+    },
+    {
+      "id": "day-07",
+      "day": 7,
+      "prompt": "Starfish",
+      "theme": "white",
+      "left": {
+        "type": "image",
+        "src": "public/images/white/starfish_54951184697_l.jpg",
+        "alt": "Starfish"
+      },
+      "right": {
+        "type": "text",
+        "content": "Placeholder text for Starfish."
+      }
+    },
+    {
+      "id": "day-08",
+      "day": 8,
+      "prompt": "Reckless",
+      "theme": "white",
+      "left": {
+        "type": "image",
+        "src": "public/images/white/reckless_54952319324_l.jpg",
+        "alt": "Reckless"
+      },
+      "right": {
+        "type": "text",
+        "content": "Placeholder text for Reckless."
+      }
+    },
+    {
+      "id": "day-09",
+      "day": 9,
+      "prompt": "Heavy",
+      "theme": "white",
+      "left": {
+        "type": "image",
+        "src": "public/images/white/heavy_55015014773_l.jpg",
+        "alt": "Heavy"
+      },
+      "right": {
+        "type": "text",
+        "content": "Placeholder text for Heavy."
+      }
+    },
+    {
+      "id": "day-10",
+      "day": 10,
+      "prompt": "Sweep",
+      "theme": "white",
+      "left": {
+        "type": "image",
+        "src": "public/images/white/sweep_54953571986_l.jpg",
+        "alt": "Sweep"
+      },
+      "right": {
+        "type": "text",
+        "content": "Placeholder text for Sweep."
+      }
+    },
+    {
+      "id": "day-11",
+      "day": 11,
+      "prompt": "Sting",
+      "theme": "white",
+      "left": {
+        "type": "image",
+        "src": "public/images/white/sting_55048931430_l.jpg",
+        "alt": "Sting"
+      },
+      "right": {
+        "type": "text",
+        "content": "Placeholder text for Sting."
+      }
+    },
+    {
+      "id": "day-12",
+      "day": 12,
+      "prompt": "Shredded",
+      "theme": "white",
+      "left": {
+        "type": "image",
+        "src": "public/images/white/shredded_55015080574_l.jpg",
+        "alt": "Shredded"
+      },
+      "right": {
+        "type": "text",
+        "content": "Placeholder text for Shredded."
+      }
+    },
+    {
+      "id": "day-13",
+      "day": 13,
+      "prompt": "Drink",
+      "theme": "white",
+      "left": {
+        "type": "image",
+        "src": "public/images/white/drink_55012710075_l.jpg",
+        "alt": "Drink"
+      },
+      "right": {
+        "type": "text",
+        "content": "Placeholder text for Drink."
+      }
+    },
+    {
+      "id": "day-14",
+      "day": 14,
+      "prompt": "Trunk",
+      "theme": "white",
+      "left": {
+        "type": "image",
+        "src": "public/images/white/trunk_55012829349_l.jpg",
+        "alt": "Trunk"
+      },
+      "right": {
+        "type": "text",
+        "content": "Placeholder text for Trunk."
+      }
+    },
+    {
+      "id": "day-15",
+      "day": 15,
+      "prompt": "Ragged",
+      "theme": "white",
+      "left": {
+        "type": "image",
+        "src": "public/images/white/ragged_55013936927_l.jpg",
+        "alt": "Ragged"
+      },
+      "right": {
+        "type": "text",
+        "content": "Placeholder text for Ragged."
+      }
+    },
+    {
+      "id": "day-16",
+      "day": 16,
+      "prompt": "Blunder",
+      "theme": "white",
+      "left": {
+        "type": "placeholder",
+        "prompt": "Blunder"
+      },
+      "right": {
+        "type": "text",
+        "content": "Placeholder text for Blunder."
+      }
+    },
+    {
+      "id": "day-17",
+      "day": 17,
+      "prompt": "Ornate",
+      "theme": "black",
+      "left": {
+        "type": "image",
+        "src": "public/images/black/ornate_55036570368_l.jpg",
+        "alt": "Ornate"
+      },
+      "right": {
+        "type": "text",
+        "content": "Placeholder text for Ornate."
+      }
+    },
+    {
+      "id": "day-18",
+      "day": 18,
+      "prompt": "Deal",
+      "theme": "white",
+      "left": {
+        "type": "image",
+        "src": "public/images/white/deal_55036652259_l.jpg",
+        "alt": "Deal"
+      },
+      "right": {
+        "type": "text",
+        "content": "Placeholder text for Deal."
+      }
+    },
+    {
+      "id": "day-19",
+      "day": 19,
+      "prompt": "Arctic",
+      "theme": "white",
+      "left": {
+        "type": "image",
+        "src": "public/images/white/arctic_55036570388_l.jpg",
+        "alt": "Arctic"
+      },
+      "right": {
+        "type": "text",
+        "content": "Placeholder text for Arctic."
+      }
+    },
+    {
+      "id": "day-20",
+      "day": 20,
+      "prompt": "Rivals",
+      "theme": "white",
+      "left": {
+        "type": "image",
+        "src": "public/images/white/rivals_55048931435_l.jpg",
+        "alt": "Rivals"
+      },
+      "right": {
+        "type": "text",
+        "content": "Placeholder text for Rivals."
+      }
+    },
+    {
+      "id": "day-21",
+      "day": 21,
+      "prompt": "Blast",
+      "theme": "black",
+      "left": {
+        "type": "image",
+        "src": "public/images/black/blast_55047694387_l.jpg",
+        "alt": "Blast"
+      },
+      "right": {
+        "type": "text",
+        "content": "Placeholder text for Blast."
+      }
+    },
+    {
+      "id": "day-22",
+      "day": 22,
+      "prompt": "Button",
+      "theme": "white",
+      "left": {
+        "type": "image",
+        "src": "public/images/white/button_55035488937_l.jpg",
+        "alt": "Button"
+      },
+      "right": {
+        "type": "text",
+        "content": "Placeholder text for Button."
+      }
+    },
+    {
+      "id": "day-23",
+      "day": 23,
+      "prompt": "Firefly",
+      "theme": "black",
+      "left": {
+        "type": "image",
+        "src": "public/images/black/firefly_55276348239_l.jpg",
+        "alt": "Firefly"
+      },
+      "right": {
+        "type": "text",
+        "content": "Placeholder text for Firefly."
+      }
+    },
+    {
+      "id": "day-24",
+      "day": 24,
+      "prompt": "Rowdy",
+      "theme": "white",
+      "left": {
+        "type": "image",
+        "src": "public/images/white/rowdy_55260058826_l.jpg",
+        "alt": "Rowdy"
+      },
+      "right": {
+        "type": "text",
+        "content": "Placeholder text for Rowdy."
+      }
+    },
+    {
+      "id": "day-25",
+      "day": 25,
+      "prompt": "Inferno",
+      "theme": "white",
+      "left": {
+        "type": "image",
+        "src": "public/images/white/inferno_55048779388_l.jpg",
+        "alt": "Inferno"
+      },
+      "right": {
+        "type": "text",
+        "content": "Placeholder text for Inferno."
+      }
+    },
+    {
+      "id": "day-26",
+      "day": 26,
+      "prompt": "Puzzling",
+      "theme": "white",
+      "left": {
+        "type": "image",
+        "src": "public/images/white/puzzle_55261492798_l.jpg",
+        "alt": "Puzzling"
+      },
+      "right": {
+        "type": "text",
+        "content": "Placeholder text for Puzzling."
+      }
+    },
+    {
+      "id": "day-27",
+      "day": 27,
+      "prompt": "Onion",
+      "theme": "white",
+      "left": {
+        "type": "image",
+        "src": "public/images/white/onion_55048931465_l.jpg",
+        "alt": "Onion"
+      },
+      "right": {
+        "type": "text",
+        "content": "Placeholder text for Onion."
+      }
+    },
+    {
+      "id": "day-28",
+      "day": 28,
+      "prompt": "Skeletal",
+      "theme": "white",
+      "left": {
+        "type": "image",
+        "src": "public/images/white/skeletal_55260456205_l.jpg",
+        "alt": "Skeletal"
+      },
+      "right": {
+        "type": "text",
+        "content": "Placeholder text for Skeletal."
+      }
+    },
+    {
+      "id": "day-29",
+      "day": 29,
+      "prompt": "Lesson",
+      "theme": "white",
+      "left": {
+        "type": "placeholder",
+        "prompt": "Lesson"
+      },
+      "right": {
+        "type": "text",
+        "content": "Placeholder text for Lesson."
+      }
+    },
+    {
+      "id": "day-30",
+      "day": 30,
+      "prompt": "Vacant",
+      "theme": "white",
+      "left": {
+        "type": "placeholder",
+        "prompt": "Vacant"
+      },
+      "right": {
+        "type": "text",
+        "content": "Placeholder text for Vacant."
+      }
+    },
+    {
+      "id": "day-31",
+      "day": 31,
+      "prompt": "Award",
+      "theme": "white",
+      "left": {
+        "type": "image",
+        "src": "public/images/white/award_55276118921_l.jpg",
+        "alt": "Award"
+      },
+      "right": {
+        "type": "text",
+        "content": "Placeholder text for Award."
+      }
+    }
+  ]
+}

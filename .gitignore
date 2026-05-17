@@ -1,0 +1,34 @@
+# OS
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Editor / IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.cursor/
+
+# Env & secrets
+.env
+.env.*
+!.env.example
+
+# Logs & caches
+*.log
+npm-debug.log*
+.yarn/
+node_modules/
+__pycache__/
+*.py[cod]
+.Python
+.cache/
+
+# Build output (if added later)
+dist/
+build/

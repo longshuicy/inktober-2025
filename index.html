@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InkTober 2025</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&family=Special+Elite&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/book.css" />
+  </head>
+  <body>
+    <p class="sr-only">
+      Use arrow keys or tap the left and right sides of the page to turn pages.
+    </p>
+
+    <div id="book" class="book" data-theme="black">
+      <div class="book__stage">
+        <article class="spread spread--current" aria-hidden="false"></article>
+        <article class="spread spread--incoming" aria-hidden="true"></article>
+      </div>
+
+      <nav class="book__nav" aria-label="Page navigation">
+        <button type="button" class="book__nav-btn book__nav-btn--prev" aria-label="Previous page">
+          ‹
+        </button>
+        <span class="book__page-indicator" aria-live="polite"></span>
+        <button type="button" class="book__nav-btn book__nav-btn--next" aria-label="Next page">
+          ›
+        </button>
+      </nav>
+
+      <div class="book__tap-zones" aria-hidden="true">
+        <button type="button" class="book__tap book__tap--prev" tabindex="-1"></button>
+        <button type="button" class="book__tap book__tap--next" tabindex="-1"></button>
+      </div>
+
+      <footer class="book__footer">
+        <p>© 2026 <a href="https://www.instagram.com/chenniferwang/?hl=en" target="_blank">@chenniferwang</a> All rights reserved.</p>
+        <p>No permission is granted to copy, modify, or distribute this work.</p>
+      </footer>
+    </div>
+
+    <script src="js/book.js" defer></script>
+  </body>
+</html>
