@@ -27,7 +27,21 @@
         <button type="button" class="book__nav-btn book__nav-btn--prev" aria-label="Previous page">
           ‹
         </button>
-        <span class="book__page-indicator" aria-live="polite"></span>
+        <div class="book__jump">
+          <button
+            type="button"
+            class="book__page-indicator"
+            aria-live="polite"
+            aria-expanded="false"
+            aria-haspopup="true"
+            aria-controls="book-jump-menu"
+          >
+            Cover
+          </button>
+          <div id="book-jump-menu" class="book__jump-menu" role="menu" aria-label="Jump to page">
+            <div class="book__jump-list" role="none"></div>
+          </div>
+        </div>
         <button type="button" class="book__nav-btn book__nav-btn--next" aria-label="Next page">
           ›
         </button>

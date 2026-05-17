@@ -24,12 +24,12 @@
       "theme": "white",
       "left": {
         "type": "image",
-        "src": "public/images/white/mustache_54912710829_l.jpg",
+        "src": "public/images/mustache_54912710829_l.jpg",
         "alt": "Mustache"
       },
       "right": {
         "type": "text",
-        "content": "Placeholder text for Mustache."
+        "content": "Congratulations! You just learned how to hold a smile in place. "
       }
     },
     {
@@ -39,12 +39,12 @@
       "theme": "white",
       "left": {
         "type": "image",
-        "src": "public/images/white/weave_54951184767_l.jpg",
+        "src": "public/images/weave_54951184767_l.jpg",
         "alt": "Weave"
       },
       "right": {
         "type": "text",
-        "content": "Placeholder text for Weave."
+        "content": "All that restless crossing, and the emptiness in my heart."
       }
     },
     {
@@ -54,12 +54,12 @@
       "theme": "white",
       "left": {
         "type": "image",
-        "src": "public/images/white/crown_54911089448_l.jpg",
+        "src": "public/images/crown_54911089448_l.jpg",
         "alt": "Crown"
       },
       "right": {
         "type": "text",
-        "content": "Placeholder text for Crown."
+        "content": "\"All hail\", whispered first by the wind."
       }
     },
     {
@@ -69,12 +69,12 @@
       "theme": "black",
       "left": {
         "type": "image",
-        "src": "public/images/black/murky_54912461426_l.jpg",
+        "src": "public/images/murky_54912461426_l.jpg",
         "alt": "Murky"
       },
       "right": {
         "type": "text",
-        "content": "Placeholder text for Murky."
+        "content": "Be aware of the murkiness."
       }
     },
     {
@@ -84,12 +84,12 @@
       "theme": "white",
       "left": {
         "type": "image",
-        "src": "public/images/white/deer_55012879685_l.jpg",
+        "src": "public/images/deer_55012879685_l.jpg",
         "alt": "Deer"
       },
       "right": {
         "type": "text",
-        "content": "Placeholder text for Deer."
+        "content": "The wildest part of you, mounted and worshipped."
       }
     },
     {
@@ -99,12 +99,12 @@
       "theme": "white",
       "left": {
         "type": "image",
-        "src": "public/images/white/pierce_54950191911_l.jpg",
+        "src": "public/images/pierce_54950191911_l.jpg",
         "alt": "Pierce"
       },
       "right": {
         "type": "text",
-        "content": "Placeholder text for Pierce."
+        "content": "Even the softest word can pierce the flesh."
       }
     },
     {
@@ -114,12 +114,12 @@
       "theme": "white",
       "left": {
         "type": "image",
-        "src": "public/images/white/starfish_54951184697_l.jpg",
+        "src": "public/images/starfish_54951184697_l.jpg",
         "alt": "Starfish"
       },
       "right": {
         "type": "text",
-        "content": "Placeholder text for Starfish."
+        "content": "A starfish at rest is an island, teaching nothing but stillness."
       }
     },
     {
@@ -129,12 +129,12 @@
       "theme": "white",
       "left": {
         "type": "image",
-        "src": "public/images/white/reckless_54952319324_l.jpg",
+        "src": "public/images/reckless_54952319324_l.jpg",
         "alt": "Reckless"
       },
       "right": {
         "type": "text",
-        "content": "Placeholder text for Reckless."
+        "content": "BODY · OVER · MIND"
       }
     },
     {
@@ -144,12 +144,12 @@
       "theme": "white",
       "left": {
         "type": "image",
-        "src": "public/images/white/heavy_55015014773_l.jpg",
+        "src": "public/images/heavy_55015014773_l.jpg",
         "alt": "Heavy"
       },
       "right": {
         "type": "text",
-        "content": "Placeholder text for Heavy."
+        "content": "The weights are made of faces: every one of them <i>yours</i>."
       }
     },
     {
@@ -159,12 +159,12 @@
       "theme": "white",
       "left": {
         "type": "image",
-        "src": "public/images/white/sweep_54953571986_l.jpg",
+        "src": "public/images/sweep_54953571986_l.jpg",
         "alt": "Sweep"
       },
       "right": {
         "type": "text",
-        "content": "Placeholder text for Sweep."
+        "content": "Shhhh...some messes were never meant to be found..."
       }
     },
     {
@@ -174,12 +174,12 @@
       "theme": "white",
       "left": {
         "type": "image",
-        "src": "public/images/white/sting_55048931430_l.jpg",
+        "src": "public/images/sting_55048931430_l.jpg",
         "alt": "Sting"
       },
       "right": {
         "type": "text",
-        "content": "Placeholder text for Sting."
+        "content": "Salvation was always made of thorns."
       }
     },
     {
@@ -189,12 +189,12 @@
       "theme": "white",
       "left": {
         "type": "image",
-        "src": "public/images/white/shredded_55015080574_l.jpg",
+        "src": "public/images/shredded_55015080574_l.jpg",
         "alt": "Shredded"
       },
       "right": {
         "type": "text",
-        "content": "Placeholder text for Shredded."
+        "content": "I invited the thought in, just to see what it felt like (wink wink)."
       }
     },
     {
@@ -204,12 +204,12 @@
       "theme": "white",
       "left": {
         "type": "image",
-        "src": "public/images/white/drink_55012710075_l.jpg",
+        "src": "public/images/drink_55012710075_l.jpg",
         "alt": "Drink"
       },
       "right": {
         "type": "text",
-        "content": "Placeholder text for Drink."
+        "content": "Oh sweet poison, my ruin and my remedy."
       }
     },
     {
@@ -219,12 +219,12 @@
       "theme": "white",
       "left": {
         "type": "image",
-        "src": "public/images/white/trunk_55012829349_l.jpg",
+        "src": "public/images/trunk_55012829349_l.jpg",
         "alt": "Trunk"
       },
       "right": {
         "type": "text",
-        "content": "Placeholder text for Trunk."
+        "content": "Every year a ring, every season a love."
       }
     },
     {
@@ -234,12 +234,12 @@
       "theme": "white",
       "left": {
         "type": "image",
-        "src": "public/images/white/ragged_55013936927_l.jpg",
+        "src": "public/images/ragged_55013936927_l.jpg",
         "alt": "Ragged"
       },
       "right": {
         "type": "text",
-        "content": "Placeholder text for Ragged."
+        "content": "Torn into a thousand pieces, and still, <i>here you are</i>."
       }
     },
     {
@@ -263,12 +263,12 @@
       "theme": "black",
       "left": {
         "type": "image",
-        "src": "public/images/black/ornate_55036570368_l.jpg",
+        "src": "public/images/ornate_55036570368_l.jpg",
         "alt": "Ornate"
       },
       "right": {
         "type": "text",
-        "content": "Placeholder text for Ornate."
+        "content": "Rococo knew that excess was just another word for <i>love</i>."
       }
     },
     {
@@ -278,12 +278,12 @@
       "theme": "white",
       "left": {
         "type": "image",
-        "src": "public/images/white/deal_55036652259_l.jpg",
+        "src": "public/images/deal_55036652259_l.jpg",
         "alt": "Deal"
       },
       "right": {
         "type": "text",
-        "content": "Placeholder text for Deal."
+        "content": "The strong call it surrender. The weak call it a deal."
       }
     },
     {
@@ -293,12 +293,12 @@
       "theme": "white",
       "left": {
         "type": "image",
-        "src": "public/images/white/arctic_55036570388_l.jpg",
+        "src": "public/images/arctic_55036570388_l.jpg",
         "alt": "Arctic"
       },
       "right": {
         "type": "text",
-        "content": "Placeholder text for Arctic."
+        "content": "The last guardian of a melting world."
       }
     },
     {
@@ -308,12 +308,12 @@
       "theme": "white",
       "left": {
         "type": "image",
-        "src": "public/images/white/rivals_55048931435_l.jpg",
+        "src": "public/images/rivals_55048931435_l.jpg",
         "alt": "Rivals"
       },
       "right": {
         "type": "text",
-        "content": "Placeholder text for Rivals."
+        "content": "What a cliche: to face your rival and find yourself staring back."
       }
     },
     {
@@ -323,12 +323,12 @@
       "theme": "black",
       "left": {
         "type": "image",
-        "src": "public/images/black/blast_55047694387_l.jpg",
+        "src": "public/images/blast_55047694387_l.jpg",
         "alt": "Blast"
       },
       "right": {
         "type": "text",
-        "content": "Placeholder text for Blast."
+        "content": "At the center of every explosion, we are watching."
       }
     },
     {
@@ -338,12 +338,12 @@
       "theme": "white",
       "left": {
         "type": "image",
-        "src": "public/images/white/button_55035488937_l.jpg",
+        "src": "public/images/button_55035488937_l.jpg",
         "alt": "Button"
       },
       "right": {
         "type": "text",
-        "content": "Placeholder text for Button."
+        "content": "If only grief had a keyboard."
       }
     },
     {
@@ -353,12 +353,12 @@
       "theme": "black",
       "left": {
         "type": "image",
-        "src": "public/images/black/firefly_55276348239_l.jpg",
+        "src": "public/images/firefly_55276348239_l.jpg",
         "alt": "Firefly"
       },
       "right": {
         "type": "text",
-        "content": "Placeholder text for Firefly."
+        "content": "Farewell. May you be slient as the sea. May you light up like a firefly."
       }
     },
     {
@@ -368,12 +368,12 @@
       "theme": "white",
       "left": {
         "type": "image",
-        "src": "public/images/white/rowdy_55260058826_l.jpg",
+        "src": "public/images/rowdy_55260058826_l.jpg",
         "alt": "Rowdy"
       },
       "right": {
         "type": "text",
-        "content": "Placeholder text for Rowdy."
+        "content": "Life is just too loud for anyone tender enough to feel it."
       }
     },
     {
@@ -383,12 +383,12 @@
       "theme": "white",
       "left": {
         "type": "image",
-        "src": "public/images/white/inferno_55048779388_l.jpg",
+        "src": "public/images/inferno_55048779388_l.jpg",
         "alt": "Inferno"
       },
       "right": {
         "type": "text",
-        "content": "Placeholder text for Inferno."
+        "content": "In this inferno, we are all drowning in our own way."
       }
     },
     {
@@ -398,12 +398,12 @@
       "theme": "white",
       "left": {
         "type": "image",
-        "src": "public/images/white/puzzle_55261492798_l.jpg",
+        "src": "public/images/puzzle_55261492798_l.jpg",
         "alt": "Puzzling"
       },
       "right": {
         "type": "text",
-        "content": "Placeholder text for Puzzling."
+        "content": "Where did we come from? What are we made of? Who are we? What is the self? What is time? What is truth? Where are we going? Who are we to each other? Does any of it matter? And most importantly: <i>Why?</i>"
       }
     },
     {
@@ -413,12 +413,12 @@
       "theme": "white",
       "left": {
         "type": "image",
-        "src": "public/images/white/onion_55048931465_l.jpg",
+        "src": "public/images/onion_55048931465_l.jpg",
         "alt": "Onion"
       },
       "right": {
         "type": "text",
-        "content": "Placeholder text for Onion."
+        "content": "Just weep. The onion is asking you to feel its wound."
       }
     },
     {
@@ -428,12 +428,12 @@
       "theme": "white",
       "left": {
         "type": "image",
-        "src": "public/images/white/skeletal_55260456205_l.jpg",
+        "src": "public/images/skeletal_55260456205_l.jpg",
         "alt": "Skeletal"
       },
       "right": {
         "type": "text",
-        "content": "Placeholder text for Skeletal."
+        "content": "What blooms must rot， and rotting, blooms again."
       }
     },
     {
@@ -471,12 +471,12 @@
       "theme": "white",
       "left": {
         "type": "image",
-        "src": "public/images/white/award_55276118921_l.jpg",
+        "src": "public/images/award_55276118921_l.jpg",
         "alt": "Award"
       },
       "right": {
         "type": "text",
-        "content": "Placeholder text for Award."
+        "content": "Best employee of the month, every month."
       }
     }
   ]

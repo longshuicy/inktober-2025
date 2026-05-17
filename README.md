@@ -8,7 +8,7 @@ A static flip-book website for [InkTober 2025](https://inktober.com/) artwork an
 
 - Book-style layout: artwork on the left, story text on the right
 - Page-turn animation hinged at the center spine
-- Black or white full-page theme per spread (from image folder)
+- Black or white full-page theme per spread (set in `pages.json`)
 - Word-by-word typing animation on the text panel
 - Cover spread with official prompt list
 
@@ -32,7 +32,7 @@ All pages are defined in [`data/pages.json`](data/pages.json):
 | `left` | Image, placeholder, or title text |
 | `right` | Story text or prompt-list image (cover) |
 
-**Add missing artwork** (days 16, 29, 30): set `left` to `{ "type": "image", "src": "public/images/...", "alt": "..." }` and match `theme` to the `black` or `white` folder.
+**Add missing artwork** (days 16, 29, 30): set `left` to `{ "type": "image", "src": "public/images/...", "alt": "..." }` and set `theme` to `"black"` or `"white"`.
 
 **Change story text:** edit `right.content` for each day.
 
@@ -46,8 +46,7 @@ All pages are defined in [`data/pages.json`](data/pages.json):
 └── public/
     ├── inktoboerprompt_54952332528_l.jpg
     └── images/
-        ├── black/
-        └── white/
+        └── *.jpg
 ```
 
 ## GitHub Pages

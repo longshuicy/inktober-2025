@@ -112,10 +112,14 @@ body {
   opacity: 1;
 }
 
-.spread--hidden-during-flip {
+/* During flip: keep the static page side visible, hide the side that is turning */
+.spread--flip-forward .panel--right {
   visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
+}
+
+.spread--flip-backward .panel--left,
+.spread--flip-backward .panel--right {
+  visibility: hidden;
 }
 
 .book__flip-leaf {
@@ -123,7 +127,7 @@ body {
   top: 0;
   height: 100%;
   width: 50%;
-  z-index: 5;
+  z-index: 8;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -242,6 +246,24 @@ body {
   max-width: 36ch;
 }
 
+.panel__text p {
+  margin-bottom: 0.75em;
+}
+
+.panel__text p:last-child {
+  margin-bottom: 0;
+}
+
+.panel__text em {
+  font-style: italic;
+}
+
+.panel__text a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .type-word {
   opacity: 0;
 }
@@ -325,7 +347,7 @@ body {
   justify-content: center;
   gap: 1.5rem;
   padding: 1rem 1.5rem;
-  z-index: 10;
+  z-index: 100;
 }
 
 .book__nav-btn {
@@ -351,10 +373,119 @@ body {
   cursor: not-allowed;
 }
 
+.book__jump {
+  position: relative;
+  z-index: 1;
+}
+
+.book__jump:hover,
+.book__jump:focus-within,
+.book__jump--open {
+  z-index: 200;
+}
+
 .book__page-indicator {
+  font-family: inherit;
   font-size: 1.25rem;
   min-width: 6ch;
+  padding: 0.35rem 0.75rem;
   text-align: center;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--fg);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.book__page-indicator:hover,
+.book__jump:focus-within .book__page-indicator {
+  border-color: var(--border);
+  background: rgba(127, 127, 127, 0.12);
+}
+
+.book__jump-menu {
+  position: absolute;
+  bottom: calc(100% + 0.5rem);
+  top: auto;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  min-width: 11rem;
+  max-width: min(18rem, 90vw);
+  max-height: min(16rem, 45vh);
+  padding: 0.35rem 0;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background-color: var(--bg);
+  color: var(--fg);
+  box-shadow: 0 -6px 28px rgba(0, 0, 0, 0.45);
+  visibility: hidden;
+  pointer-events: none;
+  transition: visibility 0.15s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  opacity: 1;
+}
+
+.book[data-theme="black"] .book__jump-menu {
+  background-color: #000;
+}
+
+.book[data-theme="white"] .book__jump-menu {
+  background-color: #fff;
+}
+
+.book__jump:hover .book__jump-menu,
+.book__jump:focus-within .book__jump-menu,
+.book__jump--open .book__jump-menu {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.book__jump-item {
+  display: block;
+  width: 100%;
+  padding: 0.45rem 0.85rem;
+  border: none;
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: inherit;
+  font-size: 0.85rem;
+  text-align: left;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.book[data-theme="black"] .book__jump-item {
+  background-color: #000;
+}
+
+.book[data-theme="white"] .book__jump-item {
+  background-color: #fff;
+}
+
+.book[data-theme="black"] .book__jump-item:hover,
+.book[data-theme="black"] .book__jump-item.is-active {
+  background-color: #1a1a1a;
+}
+
+.book[data-theme="white"] .book__jump-item:hover,
+.book[data-theme="white"] .book__jump-item.is-active {
+  background-color: #e8e8e8;
+}
+
+.book__jump-item.is-active {
+  font-weight: bold;
+}
+
+.book__jump-list {
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
 }
 
 .book__tap-zones {

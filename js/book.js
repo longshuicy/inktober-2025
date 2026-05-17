@@ -4,6 +4,9 @@
   const spreadCurrent = document.querySelector(".spread--current");
   const spreadIncoming = document.querySelector(".spread--incoming");
   const pageIndicator = document.querySelector(".book__page-indicator");
+  const jumpMenu = document.getElementById("book-jump-menu");
+  const jumpList = document.querySelector(".book__jump-list");
+  const jumpWrap = document.querySelector(".book__jump");
   const btnPrev = document.querySelector(".book__nav-btn--prev");
   const btnNext = document.querySelector(".book__nav-btn--next");
   const tapPrev = document.querySelector(".book__tap--prev");
@@ -20,22 +23,34 @@
   const TYPING_START_DELAY_AFTER_FLIP_MS = 100;
   const TYPING_START_DELAY_INITIAL_MS = 0;
 
+  const typingContentKey = Symbol("typingContent");
+
   function clearTyping() {
     typingTimers.forEach(clearTimeout);
     typingTimers = [];
   }
 
-  function createTypedElement(className, text) {
-    const el = document.createElement("p");
-    el.className = `${className} panel--typing`;
-    el.setAttribute("data-typing", text);
-    el.setAttribute("aria-label", text);
-    return el;
+  function containsHtml(str) {
+    return /<[a-z][\s\S]*>/i.test(str);
+  }
+
+  function plainTextFromHtml(html) {
+    const tmp = document.createElement("div");
+    tmp.innerHTML = html;
+    return tmp.textContent || "";
+  }
+
+  function getTypingContent(el) {
+    return el[typingContentKey] ?? "";
+  }
+
+  function setRichContent(el, html) {
+    el.innerHTML = html;
   }
 
   function populateTypedWords(el) {
-    const text = el.getAttribute("data-typing") || "";
-    el.textContent = "";
+    const text = getTypingContent(el);
+    el.innerHTML = "";
     const words = text.split(/\s+/).filter(Boolean);
     words.forEach((word, index) => {
       const span = document.createElement("span");
@@ -69,8 +84,7 @@
 
     if (reducedMotion) {
       root.querySelectorAll(".panel--typing").forEach((el) => {
-        const text = el.getAttribute("data-typing") || "";
-        el.textContent = text;
+        setRichContent(el, getTypingContent(el));
         el.classList.remove("panel--typing");
         el.classList.add("panel--typing-done");
       });
@@ -81,6 +95,19 @@
     let delay = 0;
 
     panels.forEach((panel) => {
+      const content = getTypingContent(panel);
+
+      if (containsHtml(content)) {
+        const timer = setTimeout(() => {
+          setRichContent(panel, content);
+          panel.classList.remove("panel--typing");
+          panel.classList.add("panel--typing-done");
+        }, delay);
+        typingTimers.push(timer);
+        delay += WORD_DELAY_MS;
+        return;
+      }
+
       const wordCount = populateTypedWords(panel);
       for (let i = 0; i < wordCount; i += 1) {
         const wordEl = panel.querySelectorAll(".type-word")[i];
@@ -148,12 +175,15 @@
         el.appendChild(label);
       }
       const textClass = side === "left" ? "panel__title" : "panel__text";
-      const text = staticText
-        ? Object.assign(document.createElement("p"), {
-            className: textClass,
-            textContent: panel.content,
-          })
-        : createTypedElement(textClass, panel.content);
+      const text = document.createElement("p");
+      text.className = textClass;
+      if (staticText) {
+        setRichContent(text, panel.content);
+      } else {
+        text.classList.add("panel--typing");
+        text[typingContentKey] = panel.content;
+        text.setAttribute("aria-label", plainTextFromHtml(panel.content));
+      }
       el.appendChild(text);
     } else if (panel.type === "placeholder") {
       const box = document.createElement("div");
@@ -206,10 +236,65 @@
     return `${index} / ${pages.length - 1}`;
   }
 
+  function updateJumpMenuActive() {
+    jumpMenu.querySelectorAll(".book__jump-item").forEach((btn) => {
+      const index = Number(btn.dataset.index);
+      btn.classList.toggle("is-active", index === currentIndex);
+    });
+  }
+
+  function setJumpMenuOpen(open) {
+    pageIndicator.setAttribute("aria-expanded", open ? "true" : "false");
+    jumpWrap.classList.toggle("book__jump--open", open);
+  }
+
+  function buildJumpMenu() {
+    jumpList.replaceChildren();
+    pages.forEach((page, index) => {
+      if (index === 0) return;
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "book__jump-item";
+      btn.role = "menuitem";
+      btn.dataset.index = String(index);
+      btn.textContent = page.day ? `Day ${page.day} — ${page.prompt}` : page.id;
+      jumpList.appendChild(btn);
+    });
+    updateJumpMenuActive();
+  }
+
+  function jumpTo(index) {
+    if (isFlipping || index < 0 || index >= pages.length) return;
+    if (index === currentIndex) return;
+
+    clearTyping();
+    removeFlipLeaf();
+    spreadIncoming.replaceChildren();
+    spreadIncoming.className = "spread spread--incoming";
+    spreadCurrent.classList.remove("spread--flip-forward", "spread--flip-backward");
+    book.classList.remove("is-flipping");
+    isFlipping = false;
+
+    currentIndex = index;
+    const page = pages[currentIndex];
+
+    mountSpread(spreadCurrent, page, {
+      animate: true,
+      typingDelay: index === 0 ? TYPING_START_DELAY_INITIAL_MS : TYPING_START_DELAY_AFTER_FLIP_MS,
+    });
+    spreadCurrent.className = "spread spread--current is-visible";
+    applyTheme(page);
+    updateControls();
+    preloadPage(currentIndex + 1);
+    preloadPage(currentIndex - 1);
+    setJumpMenuOpen(false);
+  }
+
   function updateControls() {
     pageIndicator.textContent = pageLabel(currentIndex);
     btnPrev.disabled = currentIndex <= 0 || isFlipping;
     btnNext.disabled = currentIndex >= pages.length - 1 || isFlipping;
+    updateJumpMenuActive();
   }
 
   function removeFlipLeaf() {
@@ -240,6 +325,7 @@
       typingDelay: TYPING_START_DELAY_AFTER_FLIP_MS,
     });
     spreadIncoming.replaceChildren();
+    spreadCurrent.classList.remove("spread--flip-forward", "spread--flip-backward");
     applyTheme(page);
 
     book.classList.remove("is-flipping");
@@ -276,9 +362,9 @@
     book.classList.add("is-flipping");
     updateControls();
 
-    mountSpread(spreadIncoming, nextPage, { hideText: true });
-    spreadIncoming.className = "spread spread--incoming spread--underneath is-visible";
-    spreadIncoming.setAttribute("aria-hidden", "false");
+    spreadIncoming.replaceChildren();
+    spreadIncoming.className = "spread spread--incoming";
+    spreadIncoming.setAttribute("aria-hidden", "true");
 
     const panelSide = forward ? "right" : "left";
     const leavingPage = pages[currentIndex];
@@ -287,7 +373,8 @@
       return;
     }
 
-    spreadCurrent.classList.add("spread--hidden-during-flip");
+    spreadCurrent.classList.remove("spread--flip-forward", "spread--flip-backward");
+    spreadCurrent.classList.add(forward ? "spread--flip-forward" : "spread--flip-backward");
 
     const leaf = createFlipLeaf(leavingPage, panelSide);
     const animClass = forward ? "book__flip-leaf--forward-out" : "book__flip-leaf--backward-out";
@@ -302,7 +389,7 @@
       leaf.removeEventListener("animationend", completeFlip);
       clearTimeout(flipTimer);
       leaf.remove();
-      spreadCurrent.classList.remove("spread--hidden-during-flip");
+      spreadCurrent.classList.remove("spread--flip-forward", "spread--flip-backward");
       finishFlip(nextIndex);
     }
 
@@ -323,6 +410,25 @@
   tapNext.addEventListener("click", next);
   tapPrev.addEventListener("click", prev);
 
+  jumpList.addEventListener("click", (e) => {
+    const btn = e.target.closest(".book__jump-item");
+    if (!btn || btn.dataset.index === undefined) return;
+    jumpTo(Number(btn.dataset.index));
+  });
+
+  jumpWrap.addEventListener("mouseenter", () => setJumpMenuOpen(true));
+  jumpWrap.addEventListener("mouseleave", () => setJumpMenuOpen(false));
+  jumpWrap.addEventListener("focusin", () => setJumpMenuOpen(true));
+  jumpWrap.addEventListener("focusout", (e) => {
+    if (!e.currentTarget.contains(e.relatedTarget)) setJumpMenuOpen(false);
+  });
+
+  pageIndicator.addEventListener("click", (e) => {
+    if (!window.matchMedia("(hover: none)").matches) return;
+    e.preventDefault();
+    setJumpMenuOpen(pageIndicator.getAttribute("aria-expanded") !== "true");
+  });
+
   document.addEventListener("keydown", (e) => {
     if (e.key === "ArrowRight") next();
     if (e.key === "ArrowLeft") prev();
@@ -339,6 +445,8 @@
         document.title = data.meta.title;
       }
       if (pages.length === 0) return;
+
+      buildJumpMenu();
 
       mountSpread(spreadCurrent, pages[0], {
         animate: true,
