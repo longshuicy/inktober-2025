@@ -34,8 +34,19 @@ body {
   --muted: rgba(255, 255, 255, 0.45);
   --border: rgba(255, 255, 255, 0.2);
   --spine: rgba(255, 255, 255, 0.14);
-  --chrome-footer: 3.75rem;
-  --chrome-nav: 4rem;
+  --chrome-footer: clamp(3rem, 8vh, 3.75rem);
+  --chrome-nav: clamp(3.25rem, 9vh, 4rem);
+  --text-body: clamp(0.95rem, 1.1vw + 0.65rem, 1.6rem);
+  --text-label: clamp(0.75rem, 0.7vw + 0.55rem, 1rem);
+  --text-title: clamp(2rem, 5.5vw + 1rem, 6rem);
+  --text-cover-tagline: clamp(0.85rem, 1vw + 0.5rem, 1.35rem);
+  --text-nav-indicator: clamp(1rem, 1.2vw + 0.6rem, 1.25rem);
+  --text-nav-btn: clamp(1.5rem, 3vw + 0.75rem, 2rem);
+  --text-footer: clamp(0.5rem, 1vw + 0.35rem, 0.7rem);
+  --text-jump: clamp(0.75rem, 0.9vw + 0.45rem, 0.85rem);
+  --pad-panel-x: clamp(2rem, 8vw, 7rem);
+  --pad-panel-y: clamp(2rem, 7vh, 5.5rem);
+  --content-inset: min(80%, 36ch);
 
   position: relative;
   width: 100%;
@@ -70,6 +81,7 @@ body {
   perspective-origin: 50% 50%;
 }
 
+/* Vertical spine (desktop): between left image and right text */
 .book__stage::after {
   content: "";
   position: absolute;
@@ -77,6 +89,8 @@ body {
   top: 0;
   bottom: 0;
   width: 1px;
+  height: auto;
+  right: auto;
   transform: translateX(-50%);
   background: var(--spine);
   z-index: 6;
@@ -150,12 +164,12 @@ body {
 }
 
 .book__flip-leaf .panel--right {
-  padding: clamp(3rem, 9vh, 5.5rem) clamp(3.5rem, 11vw, 7rem);
+  padding: var(--pad-panel-y) var(--pad-panel-x);
 }
 
 .book__flip-leaf .panel--right .panel__label,
 .book__flip-leaf .panel--right .panel__text {
-  width: min(80%, 36ch);
+  width: var(--content-inset);
   max-width: 80%;
 }
 
@@ -219,13 +233,13 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: clamp(3rem, 9vh, 5.5rem) clamp(3.5rem, 11vw, 7rem);
+  padding: var(--pad-panel-y) var(--pad-panel-x);
   overflow-y: auto;
 }
 
 .panel--right .panel__label,
 .panel--right .panel__text {
-  width: min(80%, 36ch);
+  width: var(--content-inset);
   max-width: 80%;
 }
 
@@ -240,17 +254,17 @@ body {
 
 .panel__title {
   font-family: "Mrs Saint Delafield", cursive;
-  font-size: clamp(3rem, 8vw, 6rem);
+  font-size: var(--text-title);
   line-height: 1.1;
   text-align: center;
   width: 100%;
-  padding: 2rem;
+  padding: clamp(1.25rem, 4vw, 2rem);
 }
 
 .panel__cover-tagline {
   display: block;
   font-family: "Special Elite", system-ui, serif;
-  font-size: clamp(1rem, 2.2vw, 1.35rem);
+  font-size: var(--text-cover-tagline);
   line-height: 1.55;
   letter-spacing: 0.02em;
   margin-top: 0.25rem;
@@ -262,7 +276,7 @@ body {
 
 .panel__label {
   font-family: "Special Elite", system-ui, serif;
-  font-size: clamp(0.8rem, 1.6vw, 1rem);
+  font-size: var(--text-label);
   letter-spacing: 0.05em;
   margin-bottom: 1rem;
   opacity: 0.85;
@@ -270,7 +284,7 @@ body {
 
 .panel__text {
   font-family: "Special Elite", system-ui, serif;
-  font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+  font-size: var(--text-body);
   line-height: 1.65;
   width: 100%;
 }
@@ -347,7 +361,7 @@ body {
   z-index: 10;
   padding: 0.35rem 1rem 0.55rem;
   text-align: center;
-  font-size: clamp(0.55rem, 1.2vw, 0.7rem);
+  font-size: var(--text-footer);
   line-height: 1.45;
   color: var(--muted);
 }
@@ -381,7 +395,7 @@ body {
 
 .book__nav-btn {
   font-family: inherit;
-  font-size: 2rem;
+  font-size: var(--text-nav-btn);
   line-height: 1;
   width: 2.75rem;
   height: 2.75rem;
@@ -415,7 +429,7 @@ body {
 
 .book__page-indicator {
   font-family: inherit;
-  font-size: 1.25rem;
+  font-size: var(--text-nav-indicator);
   min-width: 6ch;
   padding: 0.35rem 0.75rem;
   text-align: center;
@@ -481,7 +495,7 @@ body {
   background-color: var(--bg);
   color: var(--fg);
   font-family: inherit;
-  font-size: 0.85rem;
+  font-size: var(--text-jump);
   text-align: left;
   cursor: pointer;
   white-space: nowrap;
@@ -544,8 +558,33 @@ body {
 }
 
 @media (max-width: 768px) {
+  .book {
+    --text-body: clamp(0.9rem, 2.8vw + 0.5rem, 1.35rem);
+    --text-label: clamp(0.7rem, 2.2vw + 0.4rem, 0.95rem);
+    --text-title: clamp(1.75rem, 9vw + 0.5rem, 3.5rem);
+    --text-cover-tagline: clamp(0.8rem, 2.6vw + 0.4rem, 1.15rem);
+    --text-nav-indicator: clamp(0.95rem, 2.8vw + 0.45rem, 1.15rem);
+    --text-nav-btn: clamp(1.35rem, 5vw + 0.5rem, 1.75rem);
+    --pad-panel-x: clamp(1.25rem, 6vw, 2.5rem);
+    --pad-panel-y: clamp(1.25rem, 4vh, 2rem);
+    --content-inset: min(92%, 34ch);
+    --chrome-footer: clamp(2.75rem, 10vh, 3.5rem);
+    --chrome-nav: clamp(3rem, 11vh, 3.75rem);
+  }
+
   .book__stage {
     perspective: none;
+  }
+
+  /* Horizontal spine (mobile): between top image and bottom text */
+  .book__stage::after {
+    left: 0;
+    right: 0;
+    top: 50%;
+    bottom: auto;
+    width: auto;
+    height: 1px;
+    transform: translateY(-50%);
   }
 
   .spread {
@@ -556,17 +595,12 @@ body {
 
   .panel--left {
     border-right: none;
-    border-bottom: 1px solid var(--border);
+    border-bottom: none;
   }
 
-  .panel--right {
-    padding: clamp(2rem, 6vh, 3rem) clamp(2rem, 8vw, 2.75rem);
-  }
-
-  .panel--right .panel__label,
-  .panel--right .panel__text {
-    width: min(88%, 34ch);
-    max-width: 88%;
+  .book__tap-zones {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
   }
 
   .book__flip-leaf--forward-out,
