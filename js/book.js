@@ -14,6 +14,19 @@
 
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  function flipDurationMs() {
+    const raw = getComputedStyle(book).getPropertyValue("--flip-duration").trim();
+    if (!raw) return 700;
+    if (raw.endsWith("ms")) return Number.parseFloat(raw) || 700;
+    if (raw.endsWith("s")) return (Number.parseFloat(raw) || 0.7) * 1000;
+    return Number.parseFloat(raw) || 700;
+  }
+
+  function clearFlipClasses() {
+    book.classList.remove("book--flip-forward", "book--flip-backward");
+    spreadCurrent.classList.remove("spread--flip-forward", "spread--flip-backward");
+  }
+
   let pages = [];
   let currentIndex = 0;
   let isFlipping = false;
@@ -271,7 +284,7 @@
     removeFlipLeaf();
     spreadIncoming.replaceChildren();
     spreadIncoming.className = "spread spread--incoming";
-    spreadCurrent.classList.remove("spread--flip-forward", "spread--flip-backward");
+    clearFlipClasses();
     book.classList.remove("is-flipping");
     isFlipping = false;
 
@@ -325,7 +338,7 @@
       typingDelay: TYPING_START_DELAY_AFTER_FLIP_MS,
     });
     spreadIncoming.replaceChildren();
-    spreadCurrent.classList.remove("spread--flip-forward", "spread--flip-backward");
+    clearFlipClasses();
     applyTheme(page);
 
     book.classList.remove("is-flipping");
@@ -373,28 +386,32 @@
       return;
     }
 
-    spreadCurrent.classList.remove("spread--flip-forward", "spread--flip-backward");
     spreadCurrent.classList.add(forward ? "spread--flip-forward" : "spread--flip-backward");
 
     const leaf = createFlipLeaf(leavingPage, panelSide);
-    const animClass = forward ? "book__flip-leaf--forward-out" : "book__flip-leaf--backward-out";
-    leaf.classList.add(animClass);
     stage.appendChild(leaf);
 
     let settled = false;
 
-    function completeFlip() {
+    function completeFlip(event) {
+      if (event && event.propertyName !== "transform") return;
       if (settled) return;
       settled = true;
-      leaf.removeEventListener("animationend", completeFlip);
+      leaf.removeEventListener("transitionend", completeFlip);
       clearTimeout(flipTimer);
+      clearFlipClasses();
       leaf.remove();
-      spreadCurrent.classList.remove("spread--flip-forward", "spread--flip-backward");
       finishFlip(nextIndex);
     }
 
-    const flipTimer = setTimeout(completeFlip, 750);
-    leaf.addEventListener("animationend", completeFlip);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        book.classList.add(forward ? "book--flip-forward" : "book--flip-backward");
+      });
+    });
+
+    const flipTimer = setTimeout(completeFlip, flipDurationMs() + 50);
+    leaf.addEventListener("transitionend", completeFlip);
   }
 
   function next() {

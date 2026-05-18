@@ -34,6 +34,7 @@ body {
   --muted: rgba(255, 255, 255, 0.45);
   --border: rgba(255, 255, 255, 0.2);
   --spine: rgba(255, 255, 255, 0.14);
+  --flip-duration: 0.7s;
   --chrome-footer: clamp(3rem, 8vh, 3.75rem);
   --chrome-nav: clamp(3.25rem, 9vh, 4rem);
   --text-body: clamp(0.95rem, 1.1vw + 0.65rem, 1.6rem);
@@ -54,7 +55,7 @@ body {
   height: 100dvh;
   background: var(--bg);
   color: var(--fg);
-  transition: background-color 0.4s ease, color 0.4s ease;
+  /* transition: background-color 0.4s ease, color 0.4s ease; */
 }
 
 .book[data-theme="white"] {
@@ -147,6 +148,8 @@ body {
   justify-content: center;
   overflow: hidden;
   transform-style: preserve-3d;
+  transform: rotateY(0deg);
+  transition: transform var(--flip-duration) ease-in;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   background: var(--bg);
@@ -199,30 +202,12 @@ body {
   min-height: 0;
 }
 
-.book__flip-leaf--forward-out {
-  animation: leaf-forward-out 0.7s ease-in forwards;
+.book--flip-forward .book__flip-leaf--right {
+  transform: rotateY(-90deg);
 }
 
-.book__flip-leaf--backward-out {
-  animation: leaf-backward-out 0.7s ease-in forwards;
-}
-
-@keyframes leaf-forward-out {
-  from {
-    transform: rotateY(0deg);
-  }
-  to {
-    transform: rotateY(-90deg);
-  }
-}
-
-@keyframes leaf-backward-out {
-  from {
-    transform: rotateY(0deg);
-  }
-  to {
-    transform: rotateY(90deg);
-  }
+.book--flip-backward .book__flip-leaf--left {
+  transform: rotateY(90deg);
 }
 
 .panel--left {
@@ -603,13 +588,10 @@ body {
     grid-template-rows: 1fr 1fr;
   }
 
-  .book__flip-leaf--forward-out,
-  .book__flip-leaf--backward-out {
-    animation: none;
-  }
-
-  .book.is-flipping .spread--underneath {
-    animation: none;
+  .book--flip-forward .book__flip-leaf--right,
+  .book--flip-backward .book__flip-leaf--left {
+    transition: none;
+    transform: none;
   }
 
   .book.is-flipping .book__flip-leaf {
@@ -622,13 +604,10 @@ body {
     perspective: none;
   }
 
-  .book__flip-leaf--forward-out,
-  .book__flip-leaf--backward-out {
-    animation: none;
-  }
-
-  .book.is-flipping .spread--underneath {
-    animation: none;
+  .book--flip-forward .book__flip-leaf--right,
+  .book--flip-backward .book__flip-leaf--left {
+    transition: none;
+    transform: none;
   }
 
   .book {
