@@ -18,7 +18,7 @@
       }
     },
     {
-      "id": "day-01",
+      "id": "mustache",
       "day": 1,
       "prompt": "Mustache",
       "theme": "white",
@@ -33,7 +33,7 @@
       }
     },
     {
-      "id": "day-02",
+      "id": "weave",
       "day": 2,
       "prompt": "Weave",
       "theme": "white",
@@ -48,7 +48,7 @@
       }
     },
     {
-      "id": "day-03",
+      "id": "crown",
       "day": 3,
       "prompt": "Crown",
       "theme": "white",
@@ -63,7 +63,7 @@
       }
     },
     {
-      "id": "day-04",
+      "id": "murky",
       "day": 4,
       "prompt": "Murky",
       "theme": "black",
@@ -78,7 +78,7 @@
       }
     },
     {
-      "id": "day-05",
+      "id": "deer",
       "day": 5,
       "prompt": "Deer",
       "theme": "white",
@@ -93,7 +93,7 @@
       }
     },
     {
-      "id": "day-06",
+      "id": "pierce",
       "day": 6,
       "prompt": "Pierce",
       "theme": "white",
@@ -108,7 +108,7 @@
       }
     },
     {
-      "id": "day-07",
+      "id": "starfish",
       "day": 7,
       "prompt": "Starfish",
       "theme": "white",
@@ -123,7 +123,7 @@
       }
     },
     {
-      "id": "day-08",
+      "id": "reckless",
       "day": 8,
       "prompt": "Reckless",
       "theme": "white",
@@ -138,7 +138,7 @@
       }
     },
     {
-      "id": "day-09",
+      "id": "heavy",
       "day": 9,
       "prompt": "Heavy",
       "theme": "white",
@@ -153,7 +153,7 @@
       }
     },
     {
-      "id": "day-10",
+      "id": "sweep",
       "day": 10,
       "prompt": "Sweep",
       "theme": "white",
@@ -168,7 +168,7 @@
       }
     },
     {
-      "id": "day-11",
+      "id": "sting",
       "day": 11,
       "prompt": "Sting",
       "theme": "white",
@@ -183,7 +183,7 @@
       }
     },
     {
-      "id": "day-12",
+      "id": "shredded",
       "day": 12,
       "prompt": "Shredded",
       "theme": "white",
@@ -198,7 +198,7 @@
       }
     },
     {
-      "id": "day-13",
+      "id": "drink",
       "day": 13,
       "prompt": "Drink",
       "theme": "white",
@@ -213,7 +213,7 @@
       }
     },
     {
-      "id": "day-14",
+      "id": "trunk",
       "day": 14,
       "prompt": "Trunk",
       "theme": "white",
@@ -224,11 +224,11 @@
       },
       "right": {
         "type": "text",
-        "content": "Every year a ring, every season a love."
+        "content": "Every year a ring, every season amour."
       }
     },
     {
-      "id": "day-15",
+      "id": "ragged",
       "day": 15,
       "prompt": "Ragged",
       "theme": "white",
@@ -243,7 +243,7 @@
       }
     },
     {
-      "id": "day-16",
+      "id": "blunder",
       "day": 16,
       "prompt": "Blunder",
       "theme": "white",
@@ -257,7 +257,7 @@
       }
     },
     {
-      "id": "day-17",
+      "id": "ornate",
       "day": 17,
       "prompt": "Ornate",
       "theme": "black",
@@ -268,11 +268,11 @@
       },
       "right": {
         "type": "text",
-        "content": "Rococo knew that excess was just another word for <i>love</i>."
+        "content": "Every gilded curl a defiance, every excess a declaration."
       }
     },
     {
-      "id": "day-18",
+      "id": "deal",
       "day": 18,
       "prompt": "Deal",
       "theme": "white",
@@ -287,7 +287,7 @@
       }
     },
     {
-      "id": "day-19",
+      "id": "arctic",
       "day": 19,
       "prompt": "Arctic",
       "theme": "white",
@@ -302,7 +302,7 @@
       }
     },
     {
-      "id": "day-20",
+      "id": "rivals",
       "day": 20,
       "prompt": "Rivals",
       "theme": "white",
@@ -317,7 +317,7 @@
       }
     },
     {
-      "id": "day-21",
+      "id": "blast",
       "day": 21,
       "prompt": "Blast",
       "theme": "black",
@@ -332,7 +332,7 @@
       }
     },
     {
-      "id": "day-22",
+      "id": "button",
       "day": 22,
       "prompt": "Button",
       "theme": "white",
@@ -347,7 +347,7 @@
       }
     },
     {
-      "id": "day-23",
+      "id": "firefly",
       "day": 23,
       "prompt": "Firefly",
       "theme": "black",
@@ -362,7 +362,7 @@
       }
     },
     {
-      "id": "day-24",
+      "id": "rowdy",
       "day": 24,
       "prompt": "Rowdy",
       "theme": "white",
@@ -377,7 +377,7 @@
       }
     },
     {
-      "id": "day-25",
+      "id": "inferno",
       "day": 25,
       "prompt": "Inferno",
       "theme": "white",
@@ -392,10 +392,10 @@
       }
     },
     {
-      "id": "day-26",
+      "id": "puzzling",
       "day": 26,
       "prompt": "Puzzling",
-      "theme": "white",
+      "theme": "black",
       "left": {
         "type": "image",
         "src": "public/images/puzzle_55261492798_l.jpg",
@@ -407,7 +407,7 @@
       }
     },
     {
-      "id": "day-27",
+      "id": "onion",
       "day": 27,
       "prompt": "Onion",
       "theme": "white",
@@ -418,11 +418,11 @@
       },
       "right": {
         "type": "text",
-        "content": "Just weep. The onion is asking you to feel its wound."
+        "content": "The onion is asking you to weep for its pain."
       }
     },
     {
-      "id": "day-28",
+      "id": "skeletal",
       "day": 28,
       "prompt": "Skeletal",
       "theme": "white",
@@ -437,7 +437,7 @@
       }
     },
     {
-      "id": "day-29",
+      "id": "lesson",
       "day": 29,
       "prompt": "Lesson",
       "theme": "white",
@@ -451,7 +451,7 @@
       }
     },
     {
-      "id": "day-30",
+      "id": "vacant",
       "day": 30,
       "prompt": "Vacant",
       "theme": "white",
@@ -465,7 +465,7 @@
       }
     },
     {
-      "id": "day-31",
+      "id": "award",
       "day": 31,
       "prompt": "Award",
       "theme": "white",

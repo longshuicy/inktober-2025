@@ -31,6 +31,36 @@
   let currentIndex = 0;
   let isFlipping = false;
   let typingTimers = [];
+  let baseTitle = "InkTober 2025";
+
+  function getRouteFromUrl() {
+    const hash = window.location.hash.replace(/^#/, "");
+    return decodeURIComponent(hash || "");
+  }
+
+  function findIndexByRoute(route) {
+    if (!route) return -1;
+    return pages.findIndex((p) => p.id === route);
+  }
+
+  function setRoute(index, options = {}) {
+    const { replace = false } = options;
+    const page = pages[index];
+    if (!page) return;
+    const url = `#${encodeURIComponent(page.id)}`;
+    if (window.location.hash === url && !replace) return;
+    const state = { index };
+    if (replace) {
+      history.replaceState(state, "", url);
+    } else {
+      history.pushState(state, "", url);
+    }
+  }
+
+  function pageDocTitle(page) {
+    if (page?.day && page?.prompt) return `${baseTitle} — Day ${page.day}: ${page.prompt}`;
+    return baseTitle;
+  }
 
   const WORD_DELAY_MS = 120;
   const TYPING_START_DELAY_AFTER_FLIP_MS = 100;
@@ -239,9 +269,7 @@
 
   function applyTheme(page) {
     book.dataset.theme = page.theme || "white";
-    if (page.meta?.title) {
-      document.title = page.meta.title;
-    }
+    document.title = pageDocTitle(page);
   }
 
   function pageLabel(index) {
@@ -276,8 +304,10 @@
     updateJumpMenuActive();
   }
 
-  function jumpTo(index) {
-    if (isFlipping || index < 0 || index >= pages.length) return;
+  function jumpTo(index, options = {}) {
+    const { force = false, skipHistory = false } = options;
+    if (!force && isFlipping) return;
+    if (index < 0 || index >= pages.length) return;
     if (index === currentIndex) return;
 
     clearTyping();
@@ -301,6 +331,8 @@
     preloadPage(currentIndex + 1);
     preloadPage(currentIndex - 1);
     setJumpMenuOpen(false);
+
+    if (!skipHistory) setRoute(currentIndex);
   }
 
   function updateControls() {
@@ -349,9 +381,12 @@
     preloadPage(currentIndex - 1);
   }
 
-  function goTo(nextIndex, direction) {
+  function goTo(nextIndex, direction, options = {}) {
+    const { skipHistory = false } = options;
     if (isFlipping || nextIndex < 0 || nextIndex >= pages.length) return;
     if (nextIndex === currentIndex) return;
+
+    if (!skipHistory) setRoute(nextIndex);
 
     clearTyping();
 
@@ -451,6 +486,29 @@
     if (e.key === "ArrowLeft") prev();
   });
 
+  function navigateToIndexFromHistory(target) {
+    if (target < 0 || target === currentIndex) return;
+    if (target === currentIndex + 1) {
+      goTo(target, "forward", { skipHistory: true });
+    } else if (target === currentIndex - 1) {
+      goTo(target, "backward", { skipHistory: true });
+    } else {
+      jumpTo(target, { skipHistory: true, force: true });
+    }
+  }
+
+  window.addEventListener("popstate", () => {
+    const target = findIndexByRoute(getRouteFromUrl());
+    if (target < 0) return;
+    navigateToIndexFromHistory(target);
+  });
+
+  window.addEventListener("hashchange", () => {
+    const target = findIndexByRoute(getRouteFromUrl());
+    if (target < 0 || target === currentIndex) return;
+    navigateToIndexFromHistory(target);
+  });
+
   fetch("data/pages.json")
     .then((res) => {
       if (!res.ok) throw new Error(`Failed to load pages: ${res.status}`);
@@ -459,21 +517,28 @@
     .then((data) => {
       pages = data.pages || [];
       if (data.meta?.title) {
-        document.title = data.meta.title;
+        baseTitle = data.meta.title;
       }
       if (pages.length === 0) return;
 
       buildJumpMenu();
 
-      mountSpread(spreadCurrent, pages[0], {
+      const route = getRouteFromUrl();
+      const routedIndex = findIndexByRoute(route);
+      const initialIndex = routedIndex >= 0 ? routedIndex : 0;
+      currentIndex = initialIndex;
+
+      mountSpread(spreadCurrent, pages[initialIndex], {
         animate: true,
         typingDelay: TYPING_START_DELAY_INITIAL_MS,
       });
       spreadCurrent.classList.add("is-visible");
-      applyTheme(pages[0]);
+      applyTheme(pages[initialIndex]);
       updateControls();
+      setRoute(initialIndex, { replace: true });
 
-      preloadPage(1);
+      preloadPage(initialIndex + 1);
+      preloadPage(initialIndex - 1);
     })
     .catch((err) => {
       console.error(err);
