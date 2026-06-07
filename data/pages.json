@@ -456,12 +456,13 @@
       "prompt": "Vacant",
       "theme": "white",
       "left": {
-        "type": "placeholder",
+        "type": "image",
+        "src": "public/images/vacant_55319335247_l.jpg",
         "prompt": "Vacant"
       },
       "right": {
         "type": "text",
-        "content": "Placeholder text for Vacant."
+        "content": "She searched every vacant room, and found only more vacant rooms."
       }
     },
     {
