@@ -255,6 +255,7 @@
 
   function mountSpread(spreadEl, page, options = {}) {
     const { animate = false, hideText = false, typingDelay = 0 } = options;
+    spreadEl.classList.toggle("spread--cover", page.id === "cover");
     spreadEl.replaceChildren();
     const built = buildSpread(page);
     while (built.firstChild) {

@@ -9,7 +9,7 @@
       "theme": "black",
       "left": {
         "type": "text",
-        "content": "InkTober 2025<br><br><span class=\"panel__cover-tagline\"><em>31 days of ink: beauty, decay, and the audacity to keep going.</em></span>"
+        "content": "InkTober 2025<br><span class=\"panel__cover-tagline\"><em>31 days of ink: the audacity to keep going.</em></span>"
       },
       "right": {
         "type": "image",
