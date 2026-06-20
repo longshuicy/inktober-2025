@@ -248,12 +248,13 @@
       "prompt": "Blunder",
       "theme": "white",
       "left": {
-        "type": "placeholder",
+        "type": "image",
+        "src": "public/images/blunder_55346003292_l.jpg",
         "prompt": "Blunder"
       },
       "right": {
         "type": "text",
-        "content": "Placeholder text for Blunder."
+        "content": "Spilled ink drowns time present and time past. This world is your careless dream."
       }
     },
     {
@@ -440,14 +441,15 @@
       "id": "lesson",
       "day": 29,
       "prompt": "Lesson",
-      "theme": "white",
+      "theme": "black",
       "left": {
-        "type": "placeholder",
+        "type": "image",
+        "src": "public/images/lesson_55346003297_l.jpg",
         "prompt": "Lesson"
       },
       "right": {
         "type": "text",
-        "content": "Placeholder text for Lesson."
+        "content": "The greatest lesson hides where shadow ends and cosmos begins."
       }
     },
     {
@@ -457,7 +459,7 @@
       "theme": "white",
       "left": {
         "type": "image",
-        "src": "public/images/vacant_55319335247_l.jpg",
+        "src": "public/images/vacant_55347341040_l.jpg",
         "prompt": "Vacant"
       },
       "right": {
